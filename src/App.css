@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(135deg, #000000 0%, #0b192c 100%);
+  background-attachment: fixed;
+  color: #faf2f2;
+}
+
+/* NAVBAR */
+
+header {
+  padding: 2rem 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #5c6874;
+}
+
+/* HERO SECTION */
+
+.hero {
+  height: 80vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  width: 45rem;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  z-index: -1;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.8s ease,
+    transform 0.8s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+  transform: scale(5);
+}
+
+/* ABOUT SECTION */
+
+.about-us {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 6rem;
+}
+
+.about-left {
+  max-width: 500px;
+}
+
+.about-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image {
+  width: min(28rem, 90%);
+  max-width: 100%;
+}
+
+.about-us h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.about-us p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .logo-image {
+    width: 28rem;
+  }
+
+  .about-us {
+    min-height: 100vh;
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+}
+
+/* services */
+.services {
+  display: flex;
+  width: 100%;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  perspective: 2000px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+}
+
+.services::-webkit-scrollbar {
+  display: none;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.service {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.service-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 90vw;
+  height: 60%;
+}
+
+.service-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  font-size: 1.2rem;
+  color: #ddd;
+}

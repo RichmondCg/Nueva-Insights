@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import LightRays from "./elements/LightRays";
-import LiquidEther from "./elements/LiquidEther";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Stack from "./elements/Stack";
-
+import GradientText from "./elements/GradientText";
+import SocialMediaGraph from "./elements/SocialMediaGraph";
+import TrendLine from "./elements/TrendLine";
+import { Facebook, Instagram, Linkedin, Youtube, Music2 } from "lucide-react";
+import logo from "./assets/logo.png";
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
@@ -95,7 +97,6 @@ function App() {
             const offset = i - progress * maxIndex;
             const clampedOffset = gsap.utils.clamp(-1.5, 1.5, offset);
 
-            // Exiting cards should feel closer: bigger + more forward in Z.
             const exitProgress = Math.min(Math.abs(clampedOffset) / 1.5, 1);
             const rotation = clampedOffset * -44;
             const scale = 1 + exitProgress * 0.35;
@@ -142,38 +143,9 @@ function App() {
         />
       </div>
 
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          position: "absolute",
-          pointerEvents: "none",
-        }}
-      >
-        <LiquidEther
-          colors={["#18e7bd", "#16b5d4", "#00fa9a"]}
-          mouseForce={20}
-          cursorSize={65}
-          isViscous
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={18}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo
-          autoPlay={true}
-          autoSpeed={0.35}
-          autoIntensity={4}
-          takeoverDuration={0.25}
-          autoResumeDelay={0.5}
-          autoRampDuration={0.6}
-          color0="#18e7bd"
-          color1="#16b5d4"
-          color2="#00fa9a"
-        />
-      </div>
       <header>
         <nav>
+          <img src={logo} alt="Nueva Insights Logo" className="w-16 h-16" />
           <ul class="nav-links">
             <li>
               <a href="#">Home</a>
@@ -188,56 +160,83 @@ function App() {
               <a href="#">Services</a>
             </li>
             <li>
+              <a href="#">Pricing</a>
+            </li>
+            <li>
               <a href="#">Contact</a>
             </li>
           </ul>
+          <div></div>
         </nav>
       </header>
       <main>
-        <section class="hero">
+        <section class="hero relative">
           <div class="hero-section">
-            <h1 class="hero-title">Nueva Insights Marketing</h1>
+            <GradientText
+              colors={["#5227FF", "#FF9FFC", "#B19EEF", "#ffffff"]}
+              animationSpeed={8}
+              showBorder={false}
+              className=" hero-title custom-class"
+            >
+              Nueva Insights Marketing
+            </GradientText>
             <p class="hero-subtitle">
               Your partner in data-driven marketing solutions.
             </p>
             <button class="cta-button">Get Started</button>
           </div>
-        </section>
 
-        <section class="about-us">
-          <div class="about-left">
-            <h2>About Us</h2>
-            <p>
-              We are a team of experts dedicated to helping businesses grow
-              through data-driven marketing strategies.
-            </p>
+          {/* Background elements */}
+          <div
+            className="absolute right-0 bottom-0 -z-10"
+            style={{
+              transform: "rotate(20deg) translateX(15%) translateY(15%)",
+              filter: "blur(0px)",
+              opacity: 0.6,
+              transformOrigin: "center center",
+            }}
+          >
+            <SocialMediaGraph />
           </div>
-          <div class="about-right">
-            <div style={{ width: 400, height: 400 }}>
-              <Stack
-                randomRotation={false}
-                sensitivity={200}
-                sendToBackOnClick={true}
-                cards={images.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`card-${i + 1}`}
-                    draggable={false}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      pointerEvents: "none",
-                      userSelect: "none",
-                    }}
-                  />
-                ))}
-                autoplay={true}
-                autoplayDelay={1500}
-                pauseOnHover={false}
-              />
-            </div>
+
+          <TrendLine />
+
+          <div className="hero-socials" aria-label="Social media links">
+            <a
+              href="#"
+              className="social-icon social-facebook"
+              aria-label="Facebook"
+            >
+              <Facebook size={16} />
+            </a>
+            <a
+              href="#"
+              className="social-icon social-instagram"
+              aria-label="Instagram"
+            >
+              <Instagram size={16} />
+            </a>
+            <a
+              href="#"
+              className="social-icon social-linkedin"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href="#"
+              className="social-icon social-youtube"
+              aria-label="YouTube"
+            >
+              <Youtube size={16} />
+            </a>
+            <a
+              href="#"
+              className="social-icon social-tiktok"
+              aria-label="TikTok"
+            >
+              <Music2 size={16} />
+            </a>
           </div>
         </section>
 
@@ -297,6 +296,120 @@ function App() {
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="features flex flex-col items-center">
+          <h2>Key Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mx-auto max-w-7xl">
+            <div className="feature">
+              <h3>Feature 1</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Feature 2</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Feature 3</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Feature 1</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Feature 2</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Feature 3</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="pricing">
+          <h2>Pricing Plans</h2>
+          <div className="pricing-grid grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto max-w-7xl">
+            <div className="pricing-card">
+              <h3>Basic</h3>
+              <p className="price">$19/month</p>
+              <ul>
+                <li>Feature A</li>
+                <li>Feature B</li>
+                <li>Feature C</li>
+              </ul>
+              <button className="select-plan">Select Plan</button>
+            </div>
+            <div className="pricing-card">
+              <h3>Pro</h3>
+              <p className="price">$49/month</p>
+              <ul>
+                <li>Feature A</li>
+                <li>Feature B</li>
+                <li>Feature C</li>
+                <li>Feature D</li>
+              </ul>
+              <button className="select-plan">Select Plan</button>
+            </div>
+            <div className="pricing-card">
+              <h3>Enterprise</h3>
+              <p className="price">Contact Us</p>
+              <ul>
+                <li>Feature A</li>
+                <li>Feature B</li>
+                <li>Feature C</li>
+                <li>Feature D</li>
+                <li>Feature E</li>
+              </ul>
+              <button className="select-plan">Select Plan</button>
+            </div>
+          </div>
+        </section>
+
+        <section className="testimonials">
+          <h2>What Our Clients Say</h2>
+          <div className="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-10 mx-auto max-w-7xl">
+            <div className="testimonial-card">
+              <p>
+                "Nueva Insights transformed our marketing strategy and boosted
+                our ROI significantly!"
+              </p>
+              <h4>- Client A</h4>
+            </div>
+            <div className="testimonial-card">
+              <p>
+                "The team at Nueva Insights is incredibly knowledgeable and
+                responsive. Highly recommend!"
+              </p>
+              <h4>- Client B</h4>
+            </div>
+            <div className="testimonial-card">
+              <p>
+                "Thanks to Nueva Insights, we have a much clearer understanding
+                of our customer data and how to leverage it."
+              </p>
+              <h4>- Client C</h4>
             </div>
           </div>
         </section>
